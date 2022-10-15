@@ -3,28 +3,51 @@ API_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6In
 let loginForm = document.getElementById('loginForm')
 let login = document.getElementById('login');
 let password = document.getElementById('password')
-loginForm.addEventListener('submit',(e)=>{
-    e.preventDefault();
-    const data ={
-        login:login.value,
-        password: password.value
+let infosUserBloc = document.getElementById('infosUserBloc')
+let userInfos = document.getElementById('userInfos')
+let logout = document.getElementById('logout')
+let btnConnexion = document.getElementById('btn-connexion')
+userConnecte = JSON.parse(localStorage.getItem('userConnecte'))
+if(userConnecte){
+    infosUserBloc.style.display='block'
+    btnConnexion.style.display = 'none'
+    userInfos.innerHTML = userConnecte.fullName
+}else{
+    if (infosUserBloc) {
+        infosUserBloc.style.display='none'
+         btnConnexion.style.display = 'block' 
     }
-    fetch(`${API_URL}utilisateur?login=eq.${data.login}&password=eq.${data.password}&select=*`,{
-        headers:{
-            apiKey:API_KEY,
-            "Content-type":"application/json"
+}
+if(loginForm){
+    loginForm.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        const data ={
+            login:login.value,
+            password: password.value
         }
-    }).then(response=>response.json())
-      .then((candidat)=>{     
-        if(candidat.length == 0){
-             console.log('non connecte');   
-        }else{
-           localStorage.setItem('userConnecte',JSON.stringify(candidat[0]))  
-           if(candidat[0].profil =='utilisateur_simple'){
-            location.href ='../../courses.html';
-           }else{
-            location.href ='../../instructeur.html';
-           }
-        }
-      })  
-})
+        fetch(`${API_URL}utilisateur?login=eq.${data.login}&password=eq.${data.password}&select=*`,{
+            headers:{
+                apiKey:API_KEY,
+                "Content-type":"application/json"
+            }
+        }).then(response=>response.json())
+          .then((candidat)=>{     
+            if(candidat.length == 0){
+                 console.log('non connecte');   
+            }else{
+               localStorage.setItem('userConnecte',JSON.stringify(candidat[0]))  
+               if(candidat[0].profil =='utilisateur_simple'){
+                location.href ='../../courses.html';
+               }else{
+                location.href ='../../instructeur.html';
+               }
+            }
+          })  
+    })
+}
+if(logout){
+    logout.addEventListener('click',(e)=>{
+        localStorage.removeItem('userConnecte');
+        location.href ='../../login.html';
+    })
+}
