@@ -1,0 +1,565 @@
+<div id="homepage" class="continer-fluid center">
+  <div class="header text-center text-light">
+    <h1 class="mb-3"><b>JAVASCRIPT QUIZ</b></h1>
+  </div>
+  <div class="buttons text-center mt-3">
+    <button type="button" class="btn btn-lg btn-primary mr-3" data-toggle="modal" data-target="#exampleModalCenter">
+      Jouer
+    </button>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content modal-body text-light">
+      <div class="modal-body">
+        <form class="text-center">
+          <h2>Vérifions vos connaissances JS !</h2>
+          <input type="text" class="" name="user" id="user" placeholder="Enter Your Name" required>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="start" onclick="startGame()" data-dismiss="modal" aria-label="Close" class="btn btn-primary btn-lg mx-auto">Commencer</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="game" class="game">
+  <div class="game-header text-center text-light">
+    <h1 class="mb-3 d-inline ">JAVASCRIPT QUIZ</h1>
+  </div>
+  <div class="game-body mt-3 text-center">
+    <p id="question"class="d-inline">Q1 :Prédire la sortie du code suivant: <br /><code class="text-light"> let a = "5" <br /> let b = 10 <br /> console.log(a + b)</code></p>
+    <div class="blank"></div>
+    <div class="options">
+        <button id="option1" class="option btn btn-lg btn-primary" onclick="optionAClicked();  nextQuestion()" >(A) undefined</button>
+        <button id="option2" class="option btn btn-lg btn-primary"
+        onclick="optionBClicked(); nextQuestion()">(B) 10</button>
+        <button id="option3" class="option btn btn-lg btn-primary" onclick="optionCClicked(); nextQuestion()"
+        >(C) 510</button>
+        <button id="option4" class="option btn btn-lg btn-primary" onclick="optionDClicked(); nextQuestion()">(D) null</button>
+    </div>
+  </div>
+  <div class="score text-center">
+    <p id="score" class=""></p>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script>
+let start = document.getElementById("start") //start button
+let startAgain = document.getElementById("startAgain")
+let game =  document.getElementById("game") //main game page
+let homepage = document.getElementById("homepage") //heading with buttons
+let modal = document.getElementById("exampleModalCenter")
+let body = document.querySelector("body")
+let score = document.getElementById("score")
+let user = document.getElementById("user")
+
+// Question and Options
+let question = document.getElementById("question")
+let option1 = document.getElementById("option1")
+let option2 = document.getElementById("option2")
+let option3 = document.getElementById("option3")
+let option4 = document.getElementById("option4")
+
+// result
+let result = document.getElementById("result")
+const quest =  [
+'Q2 : Quelle est la sortie<code class="text-light"><br /> let a = {} <br /> let b = {} <br /> console.log(a === b)</code>',
+'Q3: Comment générer un numéro aléatoire. entre a et b en utilisant Javascript?',
+'Q4: Quelle est la sortie? <br /> <code class="text-light">let obj = { <br /> add: function(){<br /> console.log(5 + 7 + "5")} <br />} <br /> obj.add</code> ',
+'Q5: Quelle est la sortie? <br /> <code class="text-light">let str = ["1", "2", "3", "4", "5"] <br /> str.splice(2, 2, "6") <br /> console.log(str)</code>',
+'Q6: Quelle est la sortie? <br /> <code class="text-light"> let a = "Global" <br /> if(true){<br /> a = "Local" } <br /> console.log(a)</code>',
+'Q7:Qui a inventé Javascript?',
+'Q8: Lequel des éléments suivants n est pas une fonction javascript?',
+'Q9: Lequel des mots suivants n est pas un mot-clé javascript?',
+'Q10: Quelle est la sortie? <br /> <code class="text-light">console.log(Number("10") + 100 + "20")</code>'
+]
+let total = 10;
+let scoreCount = 0
+let count = 0
+// Options Clicked
+var option1Clicked = false
+var option2Clicked = false
+var option3Clicked = false
+var option4Clicked = false
+
+
+startAgain.addEventListener('click', () => {
+location.reload()
+})
+
+function startGame(){
+if(user.value !== ''){
+  game.style.display= "block"
+  homepage.style.display = "none"
+  modal.style.display = "none"
+  score.innerHTML = `${user.value}\'s Score: 0`
+} else {
+  alert("Entrer votre prénom")
+}
+
+}
+
+function optionAClicked(){
+option1Clicked = true
+}
+
+function optionBClicked(){
+option2Clicked = true
+}
+
+function optionCClicked(){
+option3Clicked = true
+}
+
+function optionDClicked(){
+option4Clicked = true
+}
+
+function nextQuestion(){
+// let option3Clicked = option3.clicked
+switch(count){
+  case 0:
+    setTimeout(() => {
+      question.innerHTML = quest[0];
+      option1.textContent = "(A) true";
+      option2.textContent = "(B) false";
+      option3.textContent = "(C) error";
+      option4.textContent = "(D) undefined";
+      option1.style.backgroundColor = "#0A79DF";
+      option2.style.backgroundColor = "#0A79DF";
+      option3.style.backgroundColor = "#0A79DF";
+      option4.style.backgroundColor = "#0A79DF";
+      option4Clicked = false
+      option3Clicked = false
+      option2Clicked = false
+      option1Clicked = false
+    }, 500)
+    if(option3Clicked){
+      option3.style.backgroundColor = "green"
+        setTimeout(() => {
+          scoreCount++
+          score.textContent = `${user.value}\'s Score: ${scoreCount}`
+        }, 300)
+    } else if(option1Clicked) {
+      option1.style.backgroundColor = "red"
+      option3.style.backgroundColor = "green"
+      setTimeout(() => {
+        score.textContent = `${user.value}\'s Score: ${scoreCount}`
+      }, 300)
+    } else if(option2Clicked){
+        option2.style.backgroundColor = "red"
+        option3.style.backgroundColor = "green"
+        setTimeout(() => {
+          score.textContent = `${user.value}\'s Score: ${scoreCount}`
+        }, 300)
+    } else if(option4Clicked){
+        option4.style.backgroundColor = "red"
+        option3.style.backgroundColor = "green"
+        setTimeout(() => {
+          score.textContent = `${user.value}\'s Score: ${scoreCount}`
+        }, 300)
+    }
+    count++
+    break;
+
+case 1:
+    setTimeout(() => {
+      question.innerHTML =quest[1];
+      option1.textContent = "(A) Math.floor(Math.random() * (b - a + 1)) + a";
+      option2.textContent = "(B) Math.random(Math.floor() * (b - a + 1)) + a";
+      option3.textContent = "(C) Math.floor(Math.random() * (a - b + 1)) + b";
+      option4.textContent = "(D) Math.random(Math.floor() * (a - b + 1)) + b";
+      option1.style.backgroundColor = "#0A79DF";
+      option2.style.backgroundColor = "#0A79DF";
+      option3.style.backgroundColor = "#0A79DF";
+      option4.style.backgroundColor = "#0A79DF";
+      option4Clicked = false
+      option3Clicked = false
+      option2Clicked = false
+      option1Clicked = false
+    }, 500)
+    if(option2Clicked){
+      option2.style.backgroundColor = "green"
+        setTimeout(() => {
+          scoreCount++
+          score.textContent = `${user.value}\'s Score: ${scoreCount}`
+        }, 300)
+    } else if(option1Clicked) {
+      option2.style.backgroundColor = "green"
+      option1.style.backgroundColor = "red"
+      setTimeout(() => {
+        score.textContent = `${user.value}\'s Score: ${scoreCount}`
+      }, 300)
+    } else if(option3Clicked){
+      option2.style.backgroundColor = "green"
+        option3.style.backgroundColor = "red"
+        setTimeout(() => {
+          score.textContent = `${user.value}\'s Score: ${scoreCount}`
+        }, 300)
+    } else if(option4Clicked){
+      option2.style.backgroundColor = "green"
+        option4.style.backgroundColor = "red"
+        setTimeout(() => {
+          score.textContent = `${user.value}\'s Score: ${scoreCount}`
+        }, 300)
+    }
+    count++
+    break;
+
+  case 2:
+      setTimeout(() => {
+        question.innerHTML = quest[2] ;
+        option1.textContent = "(A) 55";
+        option2.textContent = "(B) 125";
+        option3.textContent = "(C) error";
+        option4.textContent = "(D) No Output";
+        option1.style.backgroundColor = "#0A79DF";
+        option2.style.backgroundColor = "#0A79DF";
+        option3.style.backgroundColor = "#0A79DF";
+        option4.style.backgroundColor = "#0A79DF";
+        option4Clicked = false
+        option3Clicked = false
+        option2Clicked = false
+        option1Clicked = false
+      }, 500)
+      if(option1Clicked){
+        option1.style.backgroundColor = "green"
+          setTimeout(() => {
+            scoreCount++
+            score.textContent = `${user.value}\'s Score: ${scoreCount}`
+          }, 300)
+      } else if(option2Clicked) {
+        option1.style.backgroundColor = "green"
+        option2.style.backgroundColor = "red"
+        setTimeout(() => {
+          score.textContent = `${user.value}\'s Score: ${scoreCount}`
+        }, 300)
+      } else if(option3Clicked){
+        option1.style.backgroundColor = "green"
+          option3.style.backgroundColor = "red"
+          setTimeout(() => {
+            score.textContent = `${user.value}\'s Score: ${scoreCount}`
+          }, 300)
+      } else if(option4Clicked){
+        option1.style.backgroundColor = "green"
+          option4.style.backgroundColor = "red"
+          setTimeout(() => {
+            score.textContent = `${user.value}\'s Score: ${scoreCount}`
+          }, 300)
+      }
+      count++
+      break;
+
+    case 3:
+        setTimeout(() => {
+          question.innerHTML =  quest[3] ;
+          option1.textContent = '(A) ["1", "2", "3", "4", "5", "6"]';
+          option2.textContent = '(B) ["6", "3", "4", "5"]';
+          option3.textContent = '(C) ["1", "2", "6", "5"]';
+          option4.textContent = '(D) error';
+          option1.style.backgroundColor = "#0A79DF";
+          option2.style.backgroundColor = "#0A79DF";
+          option3.style.backgroundColor = "#0A79DF";
+          option4.style.backgroundColor = "#0A79DF";
+          option4Clicked = false
+          option3Clicked = false
+          option2Clicked = false
+          option1Clicked = false
+
+        }, 500)
+        if(option4Clicked){
+
+          option4.style.backgroundColor = "green"
+            setTimeout(() => {
+              scoreCount++
+              score.textContent = `${user.value}\'s Score: ${scoreCount}`
+            }, 300)
+        } else if(option1Clicked) {
+          option4.style.backgroundColor = "green"
+          option1.style.backgroundColor = "red"
+          setTimeout(() => {
+            score.textContent = `${user.value}\'s Score: ${scoreCount}`
+          }, 300)
+        } else if(option3Clicked){
+          option4.style.backgroundColor = "green"
+            option3.style.backgroundColor = "red"
+            setTimeout(() => {
+              score.textContent = `${user.value}\'s Score: ${scoreCount}`
+            }, 300)
+        } else if(option2Clicked){
+          option4.style.backgroundColor = "green"
+            option2.style.backgroundColor = "red"
+            setTimeout(() => {
+              score.textContent = `${user.value}\'s Score: ${scoreCount}`
+            }, 300)
+        }
+        count++
+        break;
+
+    case 4:
+      setTimeout(() => {
+        question.innerHTML =  quest[4];
+        option1.textContent = "(A) Local";
+        option2.textContent = "(B) Global";
+        option3.textContent = "(C) error";
+        option4.textContent = "(D) undefined";
+        option1.style.backgroundColor = "#0A79DF";
+        option2.style.backgroundColor = "#0A79DF";
+        option3.style.backgroundColor = "#0A79DF";
+        option4.style.backgroundColor = "#0A79DF";
+        option4Clicked = false
+        option3Clicked = false
+        option2Clicked = false
+        option1Clicked = false
+      }, 500)
+      if(option3Clicked){
+        option3.style.backgroundColor = "green"
+          setTimeout(() => {
+            scoreCount++
+            score.textContent = `${user.value}\'s Score: ${scoreCount}`}, 300)
+          } else if(option1Clicked) {
+            option3.style.backgroundColor = "green"
+        option1.style.backgroundColor = "red"
+        setTimeout(() => {
+          score.textContent = `${user.value}\'s Score: ${scoreCount}`
+        }, 300)
+      } else if(option2Clicked){
+        option3.style.backgroundColor = "green"
+          option2.style.backgroundColor = "red"
+          setTimeout(() => {
+            score.textContent = `${user.value}\'s Score: ${scoreCount}`
+          }, 300)
+      } else if(option4Clicked){
+        option3.style.backgroundColor = "green"
+          option4.style.backgroundColor = "red"
+          setTimeout(() => {
+            score.textContent = `${user.value}\'s Score: ${scoreCount}`
+          }, 300)
+      }
+      count++
+      break;
+      case 5:
+        setTimeout(() => {
+          question.innerHTML =  quest[5];
+          option1.textContent = "(A) James Gosling";
+          option2.textContent = "(B) Dennis Ritchie";
+          option3.textContent = "(C) Guido van Rossum";
+          option4.textContent = "(D) Brendan Eich";
+          option1.style.backgroundColor = "#0A79DF";
+          option2.style.backgroundColor = "#0A79DF";
+          option3.style.backgroundColor = "#0A79DF";
+          option4.style.backgroundColor = "#0A79DF";
+          option4Clicked = false
+          option3Clicked = false
+          option2Clicked = false
+          option1Clicked = false
+        }, 500)
+        if(option1Clicked){
+          option1.style.backgroundColor = "green"
+            setTimeout(() => {
+              scoreCount++
+              score.textContent = `${user.value}\'s Score: ${scoreCount}`}, 300)
+            } else if(option2Clicked) {
+              option1.style.backgroundColor = "green"
+          option2.style.backgroundColor = "red"
+          setTimeout(() => {
+            score.textContent = `${user.value}\'s Score: ${scoreCount}`
+          }, 300)
+        } else if(option3Clicked){
+          option1.style.backgroundColor = "green"
+            option3.style.backgroundColor = "red"
+            setTimeout(() => {
+              score.textContent = `${user.value}\'s Score: ${scoreCount}`
+            }, 300)
+        } else if(option4Clicked){
+          option1.style.backgroundColor = "green"
+            option4.style.backgroundColor = "red"
+            setTimeout(() => {
+              score.textContent = `${user.value}\'s Score: ${scoreCount}`
+            }, 300)
+        }
+        count++
+        break;
+
+        case 6:
+          setTimeout(() => {
+            question.innerHTML = quest[6];
+            option1.textContent = "(A) document.getElementById()";
+            option2.textContent = "(B) document.querySelectorAll()";
+            option3.textContent = "(C) document.querySelector()";
+            option4.textContent = "(D) document.getElementByAttribute()";
+            option1.style.backgroundColor = "#0A79DF";
+            option2.style.backgroundColor = "#0A79DF";
+            option3.style.backgroundColor = "#0A79DF";
+            option4.style.backgroundColor = "#0A79DF";
+            option4Clicked = false
+            option3Clicked = false
+            option2Clicked = false
+            option1Clicked = false
+          }, 500)
+          if(option4Clicked){
+            option4.style.backgroundColor = "green"
+              setTimeout(() => {
+                scoreCount++
+                score.textContent = `${user.value}\'s Score: ${scoreCount}`}, 300)
+              } else if(option1Clicked) {
+                option4.style.backgroundColor = "green"
+            option1.style.backgroundColor = "red"
+            setTimeout(() => {
+              score.textContent = `${user.value}\'s Score: ${scoreCount}`
+            }, 300)
+          } else if(option3Clicked){
+            option4.style.backgroundColor = "green"
+              option3.style.backgroundColor = "red"
+              setTimeout(() => {
+                score.textContent = `${user.value}\'s Score: ${scoreCount}`
+              }, 300)
+          } else if(option2Clicked){
+            option4.style.backgroundColor = "green"
+              option2.style.backgroundColor = "red"
+              setTimeout(() => {
+                score.textContent = `${user.value}\'s Score: ${scoreCount}`
+              }, 300)
+          }
+          count++
+          break;
+
+          case 7:
+            setTimeout(() => {
+              question.innerHTML = quest[7] ;
+              option1.textContent = "(A) var";
+              option2.textContent = "(B) throw";
+              option3.textContent = "(C) char";
+              option4.textContent = "(D) void";
+              option1.style.backgroundColor = "#0A79DF";
+              option2.style.backgroundColor = "#0A79DF";
+              option3.style.backgroundColor = "#0A79DF";
+              option4.style.backgroundColor = "#0A79DF";
+              option4Clicked = false
+              option3Clicked = false
+              option2Clicked = false
+              option1Clicked = false
+            }, 500)
+            if(option4Clicked){
+              option4.style.backgroundColor = "green"
+                setTimeout(() => {
+                  scoreCount++
+                  score.textContent = `${user.value}\'s Score: ${scoreCount}`}, 300)
+                } else if(option1Clicked) {
+                  option4.style.backgroundColor = "green"
+              option1.style.backgroundColor = "red"
+              setTimeout(() => {
+                score.textContent = `${user.value}\'s Score: ${scoreCount}`
+              }, 300)
+            } else if(option3Clicked){
+              option4.style.backgroundColor = "green"
+                option3.style.backgroundColor = "red"
+                setTimeout(() => {
+                  score.textContent = `${user.value}\'s Score: ${scoreCount}`
+                }, 300)
+            } else if(option2Clicked){
+              option4.style.backgroundColor = "green"
+                option2.style.backgroundColor = "red"
+                setTimeout(() => {
+                  score.textContent = `${user.value}\'s Score: ${scoreCount}`
+                }, 300)
+            }
+            count++
+            break;
+
+            case 8:
+              if(option3Clicked){
+                option3.style.backgroundColor = "green"
+                  setTimeout(() => {
+                    scoreCount++
+                    score.textContent = `${user.value}\'s Score: ${scoreCount}`}, 300)
+                  } else if(option1Clicked) {
+                    option3.style.backgroundColor = "green"
+                option1.style.backgroundColor = "red"
+                setTimeout(() => {
+                  score.textContent = `${user.value}\'s Score: ${scoreCount}`
+                }, 300)
+              } else if(option2Clicked){
+                option3.style.backgroundColor = "green"
+                  option2.style.backgroundColor = "red"
+                  setTimeout(() => {
+                    score.textContent = `${user.value}\'s Score: ${scoreCount}`
+                  }, 300)
+              } else if(option4Clicked){
+                option3.style.backgroundColor = "green"
+                  option4.style.backgroundColor = "red"
+                  setTimeout(() => {
+                    score.textContent = `${user.value}\'s Score: ${scoreCount}`
+                  }, 300)
+              }
+              setTimeout(() => {
+                question.innerHTML =  quest[8] ;
+                option1.textContent = "(A) 1050020";
+                option2.textContent = "(B) 10120";
+                option3.textContent = "(C) 130";
+                option4.textContent = "(D) 11020";
+                option4Clicked = false
+                option3Clicked = false
+                option2Clicked = false
+                option1Clicked = false
+                option1.style.backgroundColor = "#0A79DF";
+                option2.style.backgroundColor = "#0A79DF";
+                option3.style.backgroundColor = "#0A79DF";
+                option4.style.backgroundColor = "#0A79DF";
+                option1.setAttribute("data-toggle", "modal")
+                option1.setAttribute("data-target", "#quizResult")
+                option2.setAttribute("data-toggle", "modal")
+                option2.setAttribute("data-target", "#quizResult")
+                option3.setAttribute("data-toggle", "modal")
+                option3.setAttribute("data-target", "#quizResult")
+                option4.setAttribute("data-toggle", "modal")
+                option4.setAttribute("data-target", "#quizResult")
+              }, 500)
+              count++
+              break;
+
+              case 9:
+                setTimeout(() => {
+                  result.innerHTML = `Your Score is ${scoreCount} out of ${total}`
+                }, 1)
+                if(option4Clicked){
+                  option4Clicked = false
+                  option3Clicked = false
+                  option2Clicked = false
+                  option1Clicked = false
+                  option4.style.backgroundColor = "green"
+                  scoreCount++
+                  score.textContent = `${user.value}\'s Score: ${scoreCount}`
+                     } else if(option1Clicked) {
+                  option4.style.backgroundColor = "green"
+                  option1.style.backgroundColor = "red"
+                  setTimeout(() => {
+                    score.textContent = `${user.value}\'s Score: ${scoreCount}`
+                  }, 300)
+                } else if(option3Clicked){
+                  option4.style.backgroundColor = "green"
+                    option3.style.backgroundColor = "red"
+                    setTimeout(() => {
+                      score.textContent = `${user.value}\'s Score: ${scoreCount}`
+                    }, 300)
+                } else if(option2Clicked){
+                  option4.style.backgroundColor = "green"
+                    option2.style.backgroundColor = "red"
+                    setTimeout(() => {
+                      score.textContent = `${user.value}\'s Score: ${scoreCount}`
+                    }, 300)
+                }
+                count++
+                break;
+
+            }
+
+        }
+
+
+</script>

@@ -15,9 +15,12 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {InterceptorInterceptor} from "./interceptor.interceptor";
 import {AuthGuard} from "./auth.guard";
+import { CorrigerComponent } from './corriger/corriger.component';
+import { ChallengeComponent } from './challenge/challenge.component';
+import { JavascriptComponent } from './javascript/javascript.component';
 
 @NgModule({
-  declarations: [
+  declarations: [			
     AppComponent,
       NavbarComponent,
       FooterComponent,
@@ -27,6 +30,9 @@ import {AuthGuard} from "./auth.guard";
       ContactComponent,
       DetailsCoursComponent,
       LoginComponent,
+      CorrigerComponent,
+      ChallengeComponent,
+      JavascriptComponent
    ],
     imports: [
         BrowserModule,

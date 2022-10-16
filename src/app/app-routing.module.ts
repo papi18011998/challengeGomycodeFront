@@ -8,6 +8,9 @@ import {LoginComponent} from "./login/login.component";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {AuthGuard} from "./auth.guard";
 import {DetailsCoursComponent} from "./details-cours/details-cours.component";
+import { CorrigerComponent } from './corriger/corriger.component';
+import { ChallengeComponent } from './challenge/challenge.component';
+import { JavascriptComponent } from './javascript/javascript.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +20,9 @@ const routes: Routes = [
   {path:'contact',component:ContactComponent},
   {path:'login',component:LoginComponent},
   {path:'nav-bar',component:NavbarComponent},
+  {path:'corriger',component:CorrigerComponent},
+  {path:'challenge',component:ChallengeComponent},
+  {path:'jschallenge', component:JavascriptComponent}
 
 ];
 

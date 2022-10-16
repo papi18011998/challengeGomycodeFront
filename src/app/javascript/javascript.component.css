@@ -1,0 +1,136 @@
+body {
+    box-sizing: border-box;
+    background: #c31432;  
+  background: -webkit-linear-gradient(left, #240b36, #c31432);
+  background: -o-linear-gradient(left, #240b36, #c31432);
+  background: linear-gradient(to right, #240b36, #c31432);  
+    overflow-x: hidden;
+  }
+  
+  #center1 #center2 {
+    height: 100vh;
+  }
+  
+  .center {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .header {
+    font-family: 'Pacifico', cursive;
+  }
+  
+  .modal-body {
+    background: #0f0c29;  
+  background: -webkit-linear-gradient(left, #24243e, #302b63, #0f0c29);
+  background: -o-linear-gradient(left, #24243e, #302b63, #0f0c29);
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29);  
+    border-radius: 30px 0;
+  }
+  
+  #user {
+    color: #3C40C6;
+    text-align: center;
+    border-radius: 10px;
+    font-family: 'Lobster', cursive;
+  }
+  
+  #user:focus {
+    border: 2px solid #74B9FF;
+    background: #00B4DB;  
+  background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  
+  background: linear-gradient(to right, #0083B0, #00B4DB); 
+    outline: none;
+  }
+  
+  .game {
+    display: none;
+  }
+  
+  .game-header {
+    font-family: 'Pacifico', cursive;
+    border-bottom: 2px solid #FFF;
+    margin-top: 10px;
+    padding-bottom: 30px;
+  }
+  
+  .score {
+    margin-top: 45px;
+    font-size: 30px;
+    font-family: 'Roboto Slab', serif;
+    color: #FFF
+  }
+  
+  .game-body {
+    color: #FFF;
+    font-family: 'Inconsolata', monospace;
+    font-size: 25px;
+  }
+  
+  .blank {
+    height: 50px;
+  }
+  
+  .options {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .option {
+    border-radius: 30px;
+    margin: 10px;
+    width: auto;
+    height: auto;
+    font-size: 25px;
+    overflow-wrap: break-word;
+  }
+  
+  .footer {
+      padding: 10px;
+      margin: 10px;
+      background: linear-gradient(to left, #000000, #434343);
+      color: white;
+      text-align: center;
+      border-radius: 10px;
+  }
+  
+  .fa-instagram {
+   margin-top: 10px;
+   font-size: 20px;    
+  }
+  
+  a {
+      text-decoration: none;
+  }
+  
+  /* .option:hover {
+    color: #0A79DF;
+    background-color: #000;
+  } */
+  
+  @media (min-width: 768px) {
+  
+    .game-header {
+      padding-right: 20px;
+    }
+  
+    .game-body {
+      font-size: 30px;
+    }
+  
+    .options {
+      display: block;
+    }
+  
+    .option {
+      margin: 30px;
+    }
+  
+    .score {
+      margin-top: 50px;
+    }
+  
+  }
+  
