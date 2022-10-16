@@ -13,6 +13,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     if(this.user){
       this.isLogged = true
+    }else{
+      this.isLogged = false
     }
   }
 

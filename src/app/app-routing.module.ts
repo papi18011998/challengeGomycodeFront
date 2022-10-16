@@ -7,11 +7,13 @@ import { HomeComponent } from './home/home.component';
 import {LoginComponent} from "./login/login.component";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {AuthGuard} from "./auth.guard";
+import {DetailsCoursComponent} from "./details-cours/details-cours.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {path :'apropos',component:AproposComponent},
   {path:'cour', component:CourComponent,canActivate:[AuthGuard]},
+  {path:'cour/:id', component:DetailsCoursComponent,canActivate:[AuthGuard]},
   {path:'contact',component:ContactComponent},
   {path:'login',component:LoginComponent},
   {path:'nav-bar',component:NavbarComponent},

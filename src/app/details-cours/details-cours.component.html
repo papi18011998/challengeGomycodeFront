@@ -1,1 +1,96 @@
-<p>details-cours works!</p>
+<main id="main">
+
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs" data-aos="fade-in">
+    <div class="container">
+      <h2>Présentation du cours</h2>
+      <p>{{course?.description}} </p>
+    </div>
+  </div><!-- End Breadcrumbs -->
+
+  <!-- ======= Cource Details Section ======= -->
+  <section id="course-details" class="course-details">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row">
+        <div class="col-lg-8">
+          <img [src]="course?.image" class="img-fluid" alt="">
+          <h3>{{course?.titre}}</h3>
+          <p>
+            {{course?.contenu}}
+          </p>
+        </div>
+        <div class="col-lg-4">
+
+          <div class="course-info d-flex justify-content-between align-items-center">
+            <h5>Auteur du cours</h5>
+            <p><a href="#">Walter White</a></p>
+          </div>
+
+          <div class="course-info d-flex justify-content-between align-items-center">
+            <h5>Catégorie du cours</h5>
+          </div>
+
+          <div class="course-info d-flex justify-content-between align-items-center">
+            <h5>Personnes qui suivent le cours</h5>
+            <p>30</p>
+          </div>
+
+          <div class="course-info d-flex justify-content-center align-items-center">
+            <button class="btn btn-primary"> Créer  un quizz sur ce cours</button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Cource Details Section -->
+
+  <!-- ======= Cource Details Tabs Section ======= -->
+  <section id="cource-details-tabs" class="cource-details-tabs">
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-3">
+          <ul class="nav nav-tabs flex-column">
+            <li class="nav-item">
+              <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">{{course?.titre}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Quels sont les types de programmation</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-9 mt-4 mt-lg-0">
+          <div class="tab-content">
+            <div class="tab-pane active show" id="tab-1">
+              <div class="row">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>Qu'est-ce que la programmation?</h3>
+                  <p class="fst-italic">La programmation, appelée aussi codage dans le domaine informatique, désigne l'ensemble des activités qui permettent l'écriture des programmes informatiques. </p>
+                  <p>C'est une étape importante du développement de logiciels. L'écriture d'un programme se fait dans un langage de programmation</p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img src="assets/img/course-details-tab-1.png" alt="" class="img-fluid">
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab-2">
+              <div class="row">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>Quels sont les types de programmation?</h3>
+                  <p>Il esiste 4 tpes de programmation à savoir : la programmation impérative, la programmation orientée objets, la programmation fonctionnelle et la programmation logique.</p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img src="assets/img/course-details-tab-2.png" alt="" class="img-fluid">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      </div>
+  </section><!-- End Cource Details Tabs Section -->
+
+</main><!-- End #main -->
