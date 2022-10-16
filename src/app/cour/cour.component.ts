@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CoursService} from "../cours.service";
+import {CtagorieService} from "../ctagorie.service";
 
 @Component({
   selector: 'app-cour',
@@ -8,7 +9,9 @@ import {CoursService} from "../cours.service";
 })
 export class CourComponent implements OnInit {
   courses:any
-  constructor(private courseService: CoursService) { }
+  categories:[] =[]
+  constructor(private courseService: CoursService,
+              private categorieService: CtagorieService) { }
 
   ngOnInit() {
     this.listCourses()
@@ -17,7 +20,17 @@ export class CourComponent implements OnInit {
     this.courseService.allCourses().subscribe({
       next:(data)=>{
         this.courses = data
-        console.log(data)
+        data.map((cours:any)=>{
+          this.getCategorieById(cours.categorie_id,this.categories)
+        })
+      }
+    })
+  }
+  getCategorieById(id:number, categories:[]){
+    this.categorieService.findCategorieById(id).subscribe({
+      next:(data)=>{
+        // @ts-ignore
+        categories.push(data[0])
       }
     })
   }

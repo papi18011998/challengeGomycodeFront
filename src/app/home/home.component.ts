@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CoursService} from "../cours.service";
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
-
+  courses:any
+  constructor(private coursService: CoursService) { }
   ngOnInit() {
+    this.allCourses()
   }
-
+  allCourses(){
+    this.coursService.allCourses().subscribe({
+      next:(data)=>{
+        this.courses = data
+      }
+    })
+  }
 }
