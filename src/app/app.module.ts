@@ -18,9 +18,10 @@ import {AuthGuard} from "./auth.guard";
 import { CorrigerComponent } from './corriger/corriger.component';
 import { ChallengeComponent } from './challenge/challenge.component';
 import { JavascriptComponent } from './javascript/javascript.component';
+import { PhpComponent } from './php/php.component';
 
 @NgModule({
-  declarations: [			
+  declarations: [				
     AppComponent,
       NavbarComponent,
       FooterComponent,
@@ -32,7 +33,8 @@ import { JavascriptComponent } from './javascript/javascript.component';
       LoginComponent,
       CorrigerComponent,
       ChallengeComponent,
-      JavascriptComponent
+      JavascriptComponent,
+      PhpComponent
    ],
     imports: [
         BrowserModule,
