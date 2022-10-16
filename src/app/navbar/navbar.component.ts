@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  isLogged:boolean =false
+  user : any = JSON.parse(localStorage.getItem('userConnecte')!)
   constructor() { }
 
   ngOnInit() {
+    if(this.user){
+      this.isLogged = true
+    }
   }
 
 }

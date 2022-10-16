@@ -1,0 +1,35 @@
+<main id="main">
+
+  <!-- ======= Breadcrumbs ======= -->
+
+
+  <div class="container" data-aos="fade-up">
+    <br>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+      </ol>
+    </nav>
+    <hr>
+    <div class="row">
+      <form  class=" m-auto col-md-6" id="loginForm" [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-group ">
+          <label for="exampleInputEmail1"><i class='bx bxs-user'></i> | Nom d'utilisateur*: </label>
+          <input  formControlName="login" type="text" id="login" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter votre login">
+        </div>
+        <div class="form-group ">
+          <label for="exampleInputPassword1"> <i class='bx bxs-low-vision' ></i> | Mot de passe*: </label>
+          <input formControlName="password" type="password" id="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="alert alert-danger" *ngIf="message!=null">{{message}}</div>
+        <br>
+        <button type="submit" class="btn btn-danger"> <i class='bx bxs-log-in-circle'></i> Connexion</button>
+      </form>
+      <div class="container col-md-2">
+      </div>
+    </div>
+
+
+  </div>
+  <hr>
+
+</main><!-- End #main -->
