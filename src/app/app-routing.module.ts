@@ -11,6 +11,7 @@ import {DetailsCoursComponent} from "./details-cours/details-cours.component";
 import { CorrigerComponent } from './corriger/corriger.component';
 import { ChallengeComponent } from './challenge/challenge.component';
 import { JavascriptComponent } from './javascript/javascript.component';
+import { DevinetteComponent } from './devinette/devinette.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path:'nav-bar',component:NavbarComponent},
   {path:'corriger',component:CorrigerComponent},
   {path:'challenge',component:ChallengeComponent},
-  {path:'jschallenge', component:JavascriptComponent}
+  {path:'jschallenge', component:JavascriptComponent},
+  {path:'devinettechallenge',component:DevinetteComponent}
 
 ];
 

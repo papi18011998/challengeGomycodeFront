@@ -5,7 +5,7 @@
 import {Credentials} from "../app/credentials";
 
 export const environment = {
-  production: false,
+  production: true,
   apiURL: Credentials.API_URL,
   apiKey: Credentials.API_KEY
 };

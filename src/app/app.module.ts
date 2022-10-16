@@ -19,9 +19,10 @@ import { CorrigerComponent } from './corriger/corriger.component';
 import { ChallengeComponent } from './challenge/challenge.component';
 import { JavascriptComponent } from './javascript/javascript.component';
 import { PhpComponent } from './php/php.component';
+import { DevinetteComponent } from './devinette/devinette.component';
 
 @NgModule({
-  declarations: [				
+  declarations: [					
     AppComponent,
       NavbarComponent,
       FooterComponent,
@@ -34,7 +35,8 @@ import { PhpComponent } from './php/php.component';
       CorrigerComponent,
       ChallengeComponent,
       JavascriptComponent,
-      PhpComponent
+      PhpComponent,
+      DevinetteComponent
    ],
     imports: [
         BrowserModule,
