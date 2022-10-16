@@ -1,3 +1,53 @@
+<script>
+    document.querySelector("#modal").addEventListener("click", function () {
+    init();     
+    document.getElementById("myModal").modal('show');       
+});
+</script>
+
+<!-- Start of the modal-->
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Les détails des réponses à la quiz</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <ul>
+            <li>1- Qu'est-ce que la programmation orientée objet ?</li><span>-->Réponse de l'apprenant : A</span>
+            <li>2- Définition de l'héritage en Java ?</li><span>-->Réponse de l'apprenant : E</span>
+            <li>3- Comment déclarer une variable en TypeScript ? </li><span>-->Réponse de l'apprenant : C</span>
+            <li>4- Combien y'a t-il de langages de programmation ? </li><span>-->Réponse de l'apprenant : A</span>
+            <li>5- Qu'est-ce que l'encapsulaton en orientée objet ?</li><span>-->Réponse de l'apprenant : D</span>
+            <li>6- Qu'est-ce que JPA</li><span>-->Réponse de l'apprenant : A</span>
+            <li>7- Définition du HTML </li><span>-->Réponse de l'apprenant : B</span>
+            <li>8- Qu'est-ce que le data-binding en angular</li><span>-->Réponse de l'apprenant : B</span>
+            <li>9- Qu'est-ce que la string interpolation ? </li><span>-->Réponse de l'apprenant : A</span>
+            <li>10- Qu'est-ce qu'un bean ?</li><span>-->Réponse de l'apprenant : D</span>
+          </ul>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <div class="row">
+                <button class="btn btn-success">Valider</button>
+            </div>
+            <div class="row">
+                <a href="mailto:kalsjunior17@gmail.com"  class="btn btn-info">Laisser un commentaire !</a>
+            </div>
+        </div>
+
+        <!-- Envoyer commentaire -->
+        
+      </div>
+    </div>
+  </div>
+<!--end modal-->
 <div class="overflow-x-auto">
   <div class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
       <div class="w-full lg:w-5/6">
@@ -8,11 +58,12 @@
                           <th class="py-3 px-6 text-left">Projet / Challenge</th>
                           <th class="py-3 px-6 text-left">Apprenant</th>
                           <th class="py-3 px-6 text-center">Suivi Par:</th>
+                          <th class="py-3 px-6 text-center"></th>
                           <th class="py-3 px-6 text-center">Status</th>
                       </tr>
                   </thead>
                   <tbody class="text-gray-600 text-sm font-light">
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
+                      <tr id="modal" class="border-b border-gray-200 hover:bg-gray-100">
                           <td class="py-3 px-6 text-left whitespace-nowrap">
                               <div class="flex items-center">
                                   <div class="mr-2">
@@ -40,6 +91,11 @@
                                   <img class="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/women/2.jpg"/>
                                   <img class="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/men/3.jpg"/>
                               </div>
+                          </td>
+                          <td>
+                            <button class=" mr-5 bg-yellow-200 text-purple-600 py-1 px-3 rounded-full text-xs" data-bs-toggle="modal" data-bs-target="#myModal">
+                                Détails
+                            </button>
                           </td>
                           <td class="py-3 px-6 text-center">
                               <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">En attente de correction</span>
@@ -70,6 +126,11 @@
                                   <img class="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/men/3.jpg"/>
                               </div>
                           </td>
+                          <td>
+                            <button id="modal" class=" mr-5 bg-yellow-200 text-purple-600 py-1 px-3 rounded-full text-xs" data-bs-toggle="modal" data-bs-target="#myModal">
+                                Détails
+                            </button>
+                          </td>
                           <td class="py-3 px-6 text-center">
                               <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Corrigé</span>
                           </td>
@@ -98,6 +159,11 @@
                                   <img class="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/women/2.jpg"/>
                                   <img class="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/men/3.jpg"/>
                               </div>
+                          </td>
+                          <td>
+                            <button id="modal" class=" mr-5 bg-yellow-200 text-purple-600 py-1 px-3 rounded-full text-xs" data-bs-toggle="modal" data-bs-target="#myModal">
+                                Détails
+                            </button>
                           </td>
                           <td class="py-3 px-6 text-center">
                             <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">En attente de correction</span>
@@ -128,6 +194,11 @@
                                   <img class="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/men/3.jpg"/>
                               </div>
                           </td>
+                          <td>
+                            <button id="modal" class=" mr-5 bg-yellow-200 text-purple-600 py-1 px-3 rounded-full text-xs" data-bs-toggle="modal" data-bs-target="#myModal">
+                                Détails
+                            </button>
+                          </td>
                           <td class="py-3 px-6 text-center">
                             <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">En attente de correction</span>
                           </td>
@@ -156,6 +227,11 @@
                                   <img class="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/women/2.jpg"/>
                                   <img class="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/men/3.jpg"/>
                               </div>
+                          </td>
+                          <td>
+                            <button id="modal" class=" mr-5 bg-yellow-200 text-purple-600 py-1 px-3 rounded-full text-xs" data-bs-toggle="modal" data-bs-target="#myModal">
+                                Détails
+                            </button>
                           </td>
                           <td class="py-3 px-6 text-center">
                               <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">En attente de correction</span>
@@ -186,6 +262,11 @@
                                   <img class="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/men/3.jpg"/>
                               </div>
                           </td>
+                          <td>
+                            <button id="modal" class=" mr-5 bg-yellow-200 text-purple-600 py-1 px-3 rounded-full text-xs" data-bs-toggle="modal" data-bs-target="#myModal">
+                                Détails
+                            </button>
+                          </td>
                           <td class="py-3 px-6 text-center">
                             <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">En attente de correction</span>
                           </td>
@@ -215,6 +296,11 @@
                                   <img class="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/men/3.jpg"/>
                               </div>
                           </td>
+                          <td>
+                            <button id="modal" class=" mr-5 bg-yellow-200 text-purple-600 py-1 px-3 rounded-full text-xs" data-bs-toggle="modal" data-bs-target="#myModal">
+                                Détails
+                            </button>
+                          </td>
                           <td class="py-3 px-6 text-center">
                             <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">En attente de correction</span>
                           </td>
@@ -243,6 +329,11 @@
                                   <img class="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/women/2.jpg"/>
                                   <img class="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/men/3.jpg"/>
                               </div>
+                          </td>
+                          <td>
+                            <button id="modal" class=" mr-5 bg-yellow-200 text-purple-600 py-1 px-3 rounded-full text-xs" data-bs-toggle="modal" data-bs-target="#myModal">
+                                Détails
+                            </button>
                           </td>
                           <td class="py-3 px-6 text-center">
                               <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Corrigé</span>
