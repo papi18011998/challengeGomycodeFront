@@ -29,8 +29,7 @@ export class LoginComponent implements OnInit {
           this.message = 'login ou mot de passe incorrect !!!'
         }else{
           localStorage.setItem('userConnecte',JSON.stringify(data[0]))
-          window.location.reload()
-          this.router.navigate(['/cour'])
+          window.location.href = '/cour'
         }
       }
     })
