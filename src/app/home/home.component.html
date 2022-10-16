@@ -123,18 +123,16 @@
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" *ngFor="let course of courses">
             <div class="course-item">
-              <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
+              <img [src]="course?.image" style="height: 250px; width: 400px" alt="...">
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Marketing</h4>
+                  <h4>{{course?.titre}}</h4>
                 </div>
 
-                <h3><a href="course-details.html">Marketing digital</a></h3>
-                <p>Découvrir les principes du marketing numérique.
-
-                  Découvrir les différents canaux numériques.</p>
+                <h3><a [routerLink]="['/cour', course?.id]">{{course?.titre}}</a></h3>
+                <p>{{course?.description}}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
@@ -143,47 +141,7 @@
                 </div>
               </div>
             </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="course-item">
-              <img src="assets/img/programmation.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Web Development</h4>
-                </div>
-
-                <h3><a href="course-programmation.html">Programmation web, et web mobile</a></h3>
-                <p>La programmation, appelée aussi codage dans le domaine informatique, désigne l'ensemble des activités qui permettent l'écriture des programmes informatiques.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
-                    <span>Lana</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-            <div class="course-item">
-              <img src="assets/img/bigdata.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Big Data</h4>
-                </div>
-
-                <h3><a href="course-bigdata.html">Big data</a></h3>
-                <p>Le Big Data, c'est quoi ? Littéralement, ces termes signifient mégadonnées, grosses données ou encore données massives.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
-                    <span>Brandon</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
+          </div> <!-- End Course Item--><!-- End Course Item-->
 
         </div>
 

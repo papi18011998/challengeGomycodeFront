@@ -19,9 +19,11 @@ import { CorrigerComponent } from './corriger/corriger.component';
 import { ChallengeComponent } from './challenge/challenge.component';
 import { JavascriptComponent } from './javascript/javascript.component';
 import { PhpComponent } from './php/php.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
-  declarations: [				
+  declarations: [
     AppComponent,
       NavbarComponent,
       FooterComponent,
@@ -40,7 +42,9 @@ import { PhpComponent } from './php/php.component';
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatTabsModule
     ],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:InterceptorInterceptor,multi:true},AuthGuard],
   bootstrap: [AppComponent]

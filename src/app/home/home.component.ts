@@ -7,10 +7,16 @@ import {CoursService} from "../cours.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  courses:any
   constructor(private coursService: CoursService) { }
-
   ngOnInit() {
+    this.allCourses()
   }
-
+  allCourses(){
+    this.coursService.allCourses().subscribe({
+      next:(data)=>{
+        this.courses = data
+      }
+    })
+  }
 }
