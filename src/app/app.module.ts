@@ -9,22 +9,32 @@ import { HomeComponent } from './home/home.component';
 import { AproposComponent } from './Apropos/Apropos.component';
 import { CourComponent } from './cour/cour.component';
 import { ContactComponent } from './contact/contact.component';
+import { DetailsCoursComponent } from './details-cours/details-cours.component';
+import { LoginComponent } from './login/login.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {InterceptorInterceptor} from "./interceptor.interceptor";
+import {AuthGuard} from "./auth.guard";
 
 @NgModule({
-  declarations: [						
+  declarations: [
     AppComponent,
       NavbarComponent,
       FooterComponent,
       HomeComponent,
       AproposComponent,
       CourComponent,
-      ContactComponent
+      ContactComponent,
+      DetailsCoursComponent,
+      LoginComponent,
    ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule
+    ],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:InterceptorInterceptor,multi:true},AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

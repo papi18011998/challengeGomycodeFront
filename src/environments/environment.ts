@@ -2,8 +2,12 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import {Credentials} from "../app/credentials";
+
 export const environment = {
-  production: false
+  production: false,
+  apiURL: Credentials.API_URL,
+  apiKey: Credentials.API_KEY
 };
 
 /*
